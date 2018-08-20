@@ -411,10 +411,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyCurrentDisplay: {fileID: 1377762176}
   levelOnePrice: {fileID: 1282930536}
+  levelTwoPrice: {fileID: 1146696646}
+  levelThreePrice: {fileID: 886043031}
+  levelFourPrice: {fileID: 323758826}
+  levelFivePrice: {fileID: 1110241034}
   levelOneAmount: {fileID: 792181452}
+  levelTwoAmount: {fileID: 909137026}
+  levelThreeAmount: {fileID: 297670663}
+  levelFourAmount: {fileID: 1477140164}
+  levelFiveAmount: {fileID: 829841606}
   moneyCurrent: 0
   level1Current: 0
+  level2Current: 0
+  level3Current: 0
+  level4Current: 0
+  level5Current: 0
   upgrade1Price: 50
+  upgrade2Price: 100
+  upgrade3Price: 150
+  upgrade4Price: 200
+  upgrade5Price: 250
 --- !u!4 &312097087
 Transform:
   m_ObjectHideFlags: 0
@@ -1196,7 +1212,7 @@ GameObject:
   - component: {fileID: 1216933345}
   - component: {fileID: 1216933344}
   - component: {fileID: 1216933343}
-  - component: {fileID: 1216933342}
+  - component: {fileID: 1216933347}
   m_Layer: 0
   m_Name: Upgrade5
   m_TagString: Untagged
@@ -1204,18 +1220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1216933342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1216933341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064c161272f680542b6b90b5a87ed2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradePrice: 50
 --- !u!65 &1216933343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1283,6 +1287,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1216933347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216933341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7433000ee053af34dabff18169c475c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1282930534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,10 +1547,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1595571939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064c161272f680542b6b90b5a87ed2be, type: 3}
+  m_Script: {fileID: 11500000, guid: bc77dbeb1ac8a374cbad232d45e4730a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePrice: 50
 --- !u!65 &1595571941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1614,7 +1628,7 @@ GameObject:
   - component: {fileID: 1726398495}
   - component: {fileID: 1726398494}
   - component: {fileID: 1726398493}
-  - component: {fileID: 1726398492}
+  - component: {fileID: 1726398497}
   m_Layer: 0
   m_Name: Upgrade4
   m_TagString: Untagged
@@ -1622,18 +1636,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1726398492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1726398491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064c161272f680542b6b90b5a87ed2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradePrice: 50
 --- !u!65 &1726398493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1701,6 +1703,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726398497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1726398491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa06a3dfa72c484b9df3a9597cef2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1828698995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1725,7 @@ GameObject:
   - component: {fileID: 1828698999}
   - component: {fileID: 1828698998}
   - component: {fileID: 1828698997}
-  - component: {fileID: 1828698996}
+  - component: {fileID: 1828699001}
   m_Layer: 0
   m_Name: Upgrade3
   m_TagString: Untagged
@@ -1720,18 +1733,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1828698996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1828698995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064c161272f680542b6b90b5a87ed2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradePrice: 50
 --- !u!65 &1828698997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1799,3 +1800,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1828699001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1828698995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79b9ffd4c68ff348a2b42a527274ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
