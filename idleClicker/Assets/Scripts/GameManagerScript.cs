@@ -9,7 +9,7 @@ public class GameManagerScript : MonoBehaviour
     public Text moneyCurrentDisplay;
     public Text levelOnePrice, levelTwoPrice, levelThreePrice, levelFourPrice, levelFivePrice, clickLevelPrice;
     public Text levelOneAmount, levelTwoAmount, levelThreeAmount, levelFourAmount, levelFiveAmount, clickLevelAmount;
-    public GameObject levelOnePrefab;
+    public GameObject levelOnePrefab, levelTwoPrefab, levelThreePrefab, levelFourPrefab, levelFivePrefab;
     public float moneyCurrent;
     public int level1Current, level2Current, level3Current, level4Current, level5Current;
     public float upgrade1Price = 50;
@@ -48,6 +48,7 @@ public class GameManagerScript : MonoBehaviour
         moneyCurrent += 0.01f * level3Current;
         moneyCurrent += 0.018f * level4Current;
         moneyCurrent += 0.035f * level5Current;
+
     }
 
     public void GainCurrency()
@@ -63,7 +64,7 @@ public class GameManagerScript : MonoBehaviour
             level1Current += 1;
             upgrade1Price *= 1.15f;
 
-            Instantiate(levelOnePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            Instantiate(levelOnePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelTwo()
@@ -73,6 +74,8 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade2Price;
             level2Current++;
             upgrade2Price *= 1.4f;
+
+            Instantiate(levelTwoPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelThree()
@@ -82,6 +85,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade3Price;
             level3Current++;
             upgrade3Price *= 1.60f;
+            Instantiate(levelThreePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelFour()
@@ -112,6 +116,10 @@ public class GameManagerScript : MonoBehaviour
             clickMultiplier++;
         }
     }
+
+
+
+
 
 }
 

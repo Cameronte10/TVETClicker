@@ -8,7 +8,7 @@ public class Drop : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("OutOfBounds"))
         {
-            transform.position = new Vector3(Random.Range(-7f, 7f), 7, 0);
+            transform.position = new Vector3(Random.Range(-1.4f, 2.2f), 7, transform.position.y);
         }
     }
     private void Start()
