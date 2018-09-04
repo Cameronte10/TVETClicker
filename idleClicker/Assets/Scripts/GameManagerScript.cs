@@ -12,6 +12,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject levelOnePrefab, levelTwoPrefab, levelThreePrefab, levelFourPrefab, levelFivePrefab;
     public float moneyCurrent;
     public int level1Current, level2Current, level3Current, level4Current, level5Current;
+    public int level1Old = 0, level2Old = 0, level3Old = 0, level4Old = 0, level5Old = 0;
     public float upgrade1Price = 50;
     public float upgrade2Price = 100;
     public float upgrade3Price = 150;
@@ -43,12 +44,41 @@ public class GameManagerScript : MonoBehaviour
         clickLevelPrice.text = "Click Level Price: " + clickUpgrade1Price;
         clickLevelAmount.text = "" + clickLevelAmount;
 
-        moneyCurrent += 0.0005f * level1Current;
-        moneyCurrent += 0.0045f * level2Current;
-        moneyCurrent += 0.01f * level3Current;
-        moneyCurrent += 0.018f * level4Current;
-        moneyCurrent += 0.035f * level5Current;
+        moneyCurrent += 0.0005f * level1Current * Time.deltaTime;
+        moneyCurrent += 0.0045f * level2Current * Time.deltaTime;
+        moneyCurrent += 0.01f * level3Current * Time.deltaTime;
+        moneyCurrent += 0.018f * level4Current * Time.deltaTime;
+        moneyCurrent += 0.035f * level5Current * Time.deltaTime;
 
+        if (level1Current > level1Old)
+        {
+            Instantiate(levelOnePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            level1Old++;
+        }
+        if (level2Current > level2Old)
+        {
+            Instantiate(levelTwoPrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            level2Old++;
+        }
+        if (level3Current > level3Old)
+        {
+            Instantiate(levelThreePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            level3Old++;
+        }
+        if (level4Current > level4Old)
+        {
+            Instantiate(levelFourPrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            level4Old++;
+        }
+        if (level5Current > level5Old)
+        {
+            Instantiate(levelFivePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            level5Old++;
+        }
+        if (Input.GetKey(KeyCode.Keypad5))
+        {
+            moneyCurrent += 9999999;
+        }
     }
 
     public void GainCurrency()
@@ -64,7 +94,7 @@ public class GameManagerScript : MonoBehaviour
             level1Current += 1;
             upgrade1Price *= 1.15f;
 
-            Instantiate(levelOnePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
+            
         }
     }
     public void GainLevelTwo()
@@ -75,7 +105,7 @@ public class GameManagerScript : MonoBehaviour
             level2Current++;
             upgrade2Price *= 1.4f;
 
-            Instantiate(levelTwoPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            //Instantiate(levelTwoPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelThree()
@@ -85,7 +115,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade3Price;
             level3Current++;
             upgrade3Price *= 1.60f;
-            Instantiate(levelThreePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            //Instantiate(levelThreePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelFour()
@@ -95,6 +125,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade4Price;
             level4Current++;
             upgrade4Price += 1.80f;
+            //Instantiate(levelFourPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
     public void GainLevelFive()
@@ -102,8 +133,14 @@ public class GameManagerScript : MonoBehaviour
         if (moneyCurrent >= upgrade5Price)
         {
             moneyCurrent -= upgrade5Price;
+            moneyCurrent *= 2;
+            level1Current *= 2;
+            level2Current *= 2;
+            level3Current *= 2;
+            level4Current *= 2;
             level5Current++;
-            upgrade5Price += 2;
+            upgrade5Price *= 20;
+            //Instantiate(levelFivePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
         }
     }
 
