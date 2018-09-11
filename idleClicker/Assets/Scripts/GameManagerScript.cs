@@ -8,11 +8,12 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript instance;
     public Text moneyCurrentDisplay;
     public Text levelOnePrice, levelTwoPrice, levelThreePrice, levelFourPrice, levelFivePrice, clickLevelPrice;
-    public Text levelOneAmount, levelTwoAmount, levelThreeAmount, levelFourAmount, levelFiveAmount, clickLevelAmount;
+    public Text levelOneAmount, levelTwoAmount, levelThreeAmount, levelFourAmount, levelFiveAmount, clickLevelAmount, CPS;
     public GameObject levelOnePrefab, levelTwoPrefab, levelThreePrefab, levelFourPrefab, levelFivePrefab;
     public float moneyCurrent;
     public int level1Current, level2Current, level3Current, level4Current, level5Current;
     public int level1Old = 0, level2Old = 0, level3Old = 0, level4Old = 0, level5Old = 0;
+    public float CPSmoney;
     public float upgrade1Price = 50;
     public float upgrade2Price = 100;
     public float upgrade3Price = 150;
@@ -29,26 +30,28 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyCurrentDisplay.text = "Cowoncy: " + (int)moneyCurrent;
+        moneyCurrentDisplay.text = "" + (int)moneyCurrent;
         levelOnePrice.text = "Level One Price: " + upgrade1Price;
         levelOneAmount.text = "" + level1Current;
-        levelTwoPrice.text = "Level Two Price " + upgrade2Price;
+        levelTwoPrice.text = "Level Two Price: " + upgrade2Price;
         levelTwoAmount.text = "" + level2Current;
-        levelThreePrice.text = "Level Three Price " + upgrade3Price;
+        levelThreePrice.text = "Level Three Price: " + upgrade3Price;
         levelThreeAmount.text = "" + level3Current;
-        levelFourPrice.text = "Level Four Price " + upgrade4Price;
+        levelFourPrice.text = "Level Four Price: " + upgrade4Price;
         levelFourAmount.text = "" + level4Current;
-        levelFivePrice.text = "Level Five Price " + upgrade5Price;
+        levelFivePrice.text = "Level Five Price: " + upgrade5Price;
         levelFiveAmount.text = "" + level5Current;
 
         clickLevelPrice.text = "Click Level Price: " + clickUpgrade1Price;
         clickLevelAmount.text = "" + clickLevelAmount;
 
-        moneyCurrent += 0.0005f * level1Current * Time.deltaTime;
-        moneyCurrent += 0.0045f * level2Current * Time.deltaTime;
-        moneyCurrent += 0.01f * level3Current * Time.deltaTime;
-        moneyCurrent += 0.018f * level4Current * Time.deltaTime;
-        moneyCurrent += 0.035f * level5Current * Time.deltaTime;
+        moneyCurrent += 0.5f * level1Current * Time.deltaTime;
+        moneyCurrent += 1.0f * level2Current * Time.deltaTime;
+        moneyCurrent += 1.5f * level3Current * Time.deltaTime;
+        moneyCurrent += 2.0f * level4Current * Time.deltaTime;
+        moneyCurrent += 3.0f * level5Current * Time.deltaTime;
+        CPSmoney = 0.5f * level1Current + 1.0f * level2Current + 1.5f * level3Current + 2f * level4Current + 3.0f * level5Current;
+        CPS.text = "CPS: " + CPSmoney;
 
         if (level1Current > level1Old)
         {
@@ -93,7 +96,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade1Price;
             level1Current += 1;
             upgrade1Price *= 1.15f;
-
+            upgrade1Price = Mathf.RoundToInt(upgrade1Price);
             
         }
     }
@@ -104,8 +107,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade2Price;
             level2Current++;
             upgrade2Price *= 1.4f;
-
-            //Instantiate(levelTwoPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            upgrade2Price =  Mathf.RoundToInt(upgrade2Price);
         }
     }
     public void GainLevelThree()
@@ -115,7 +117,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= upgrade3Price;
             level3Current++;
             upgrade3Price *= 1.60f;
-            //Instantiate(levelThreePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            upgrade3Price =  Mathf.RoundToInt(upgrade3Price);
         }
     }
     public void GainLevelFour()
@@ -124,8 +126,8 @@ public class GameManagerScript : MonoBehaviour
         {
             moneyCurrent -= upgrade4Price;
             level4Current++;
-            upgrade4Price += 1.80f;
-            //Instantiate(levelFourPrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            upgrade4Price *= 1.80f;
+            upgrade4Price = Mathf.RoundToInt(upgrade4Price);
         }
     }
     public void GainLevelFive()
@@ -140,7 +142,7 @@ public class GameManagerScript : MonoBehaviour
             level4Current *= 2;
             level5Current++;
             upgrade5Price *= 20;
-            //Instantiate(levelFivePrefab, new Vector3(Random.Range(-7, 7), Random.Range(-5, 5), 0), Quaternion.identity);
+            upgrade5Price =  Mathf.RoundToInt(upgrade5Price);
         }
     }
 
@@ -151,6 +153,7 @@ public class GameManagerScript : MonoBehaviour
             moneyCurrent -= clickUpgrade1Price;
             clickUpgrade1Price *= 1.5f;
             clickMultiplier++;
+            clickUpgrade1Price = Mathf.Round(clickUpgrade1Price);
         }
     }
 
