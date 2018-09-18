@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeFiveScript : MonoBehaviour {
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         GameManagerScript.instance.GainLevelFive();
     }

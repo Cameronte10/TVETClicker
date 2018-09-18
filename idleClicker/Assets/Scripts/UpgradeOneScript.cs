@@ -14,8 +14,14 @@ public class UpgradeOneScript : MonoBehaviour {
 		
 	}
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         GameManagerScript.instance.GainLevelOne();
+    }
+
+    public void buttonTest()
+    {
+        GameManagerScript.instance.GainLevelOne();
+
     }
 }

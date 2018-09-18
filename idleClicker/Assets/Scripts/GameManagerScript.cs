@@ -11,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public Text levelOneAmount, levelTwoAmount, levelThreeAmount, levelFourAmount, levelFiveAmount, clickLevelAmount, CPS;
     public GameObject levelOnePrefab, levelTwoPrefab, levelThreePrefab, levelFourPrefab, levelFivePrefab;
     public float moneyCurrent;
-    public int level1Current, level2Current, level3Current, level4Current, level5Current;
+    public int level1Current, level2Current, level3Current, level4Current, level5Current, clickCurrent;
     public int level1Old = 0, level2Old = 0, level3Old = 0, level4Old = 0, level5Old = 0;
     public float CPSmoney;
     public float upgrade1Price = 50;
@@ -43,7 +43,7 @@ public class GameManagerScript : MonoBehaviour
         levelFiveAmount.text = "" + level5Current;
 
         clickLevelPrice.text = "Click Level Price: " + clickUpgrade1Price;
-        clickLevelAmount.text = "" + clickLevelAmount;
+        clickLevelAmount.text = "" + clickCurrent;
 
         moneyCurrent += 0.5f * level1Current * Time.deltaTime;
         moneyCurrent += 1.0f * level2Current * Time.deltaTime;
@@ -52,7 +52,7 @@ public class GameManagerScript : MonoBehaviour
         moneyCurrent += 3.0f * level5Current * Time.deltaTime;
         CPSmoney = 0.5f * level1Current + 1.0f * level2Current + 1.5f * level3Current + 2f * level4Current + 3.0f * level5Current;
         CPS.text = "CPS: " + CPSmoney;
-
+        
         if (level1Current > level1Old)
         {
             Instantiate(levelOnePrefab, new Vector3(Random.Range(-1.4f, 2.2f), Random.Range(-5, 5), 0), Quaternion.identity);
@@ -154,6 +154,7 @@ public class GameManagerScript : MonoBehaviour
             clickUpgrade1Price *= 1.5f;
             clickMultiplier++;
             clickUpgrade1Price = Mathf.Round(clickUpgrade1Price);
+            clickCurrent++;
         }
     }
 
