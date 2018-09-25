@@ -31,18 +31,18 @@ public class GameManagerScript : MonoBehaviour
     void Update()
     {
         moneyCurrentDisplay.text = "" + (int)moneyCurrent;
-        levelOnePrice.text = "Level One Price: " + upgrade1Price;
+        levelOnePrice.text = "Power Price: " + upgrade1Price;
         levelOneAmount.text = "" + level1Current;
-        levelTwoPrice.text = "Level Two Price: " + upgrade2Price;
+        levelTwoPrice.text = "DNA Price: " + upgrade2Price;
         levelTwoAmount.text = "" + level2Current;
-        levelThreePrice.text = "Level Three Price: " + upgrade3Price;
+        levelThreePrice.text = "CloneBay Price: " + upgrade3Price;
         levelThreeAmount.text = "" + level3Current;
-        levelFourPrice.text = "Level Four Price: " + upgrade4Price;
+        levelFourPrice.text = "Intelligence Price: " + upgrade4Price;
         levelFourAmount.text = "" + level4Current;
-        levelFivePrice.text = "Level Five Price: " + upgrade5Price;
+        levelFivePrice.text = "Meta Price: " + upgrade5Price;
         levelFiveAmount.text = "" + level5Current;
 
-        clickLevelPrice.text = "Click Level Price: " + clickUpgrade1Price;
+        clickLevelPrice.text = "Clicker Upgrade: " + clickUpgrade1Price;
         clickLevelAmount.text = "" + clickCurrent;
 
         moneyCurrent += 0.5f * level1Current * Time.deltaTime;
